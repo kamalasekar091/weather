@@ -5,7 +5,7 @@
   <groupId>io.egen</groupId>
   <artifactId>weather-app</artifactId>
   <version>0.0.1</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>weather-app</name>
   <url>http://egen.io</url>
