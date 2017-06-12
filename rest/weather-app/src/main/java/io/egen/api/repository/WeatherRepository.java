@@ -12,6 +12,8 @@ public interface WeatherRepository {
 	
 	public Weather findRecentWeatherForCity(String city);
 	
+	public Weather findIfCityIsPresent(String city);
+	
 	public List<Weather> findAverageWeatherForCity(String city);
 	
 	public List<Weather> findDailyAverageWeatherForCity(String city);

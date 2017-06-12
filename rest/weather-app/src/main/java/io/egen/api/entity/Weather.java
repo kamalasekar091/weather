@@ -13,11 +13,14 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import io.egen.api.serializer.AuDateSerializer;
 
-
-
 @Entity
+@NamedQueries({ @NamedQuery(name = "Weather.distinctCity", query = "SELECT DISTINCT(w.city) FROM Weather w"),
+		@NamedQuery(name = "Weather.recentWeather", query = "select w from Weather w where w.timestamp=(select Max(we.timestamp) from Weather we where we.city=:pCity)"),
+		@NamedQuery(name = "Weather.checkForCity", query = "select w from Weather w where w.city=:pCity"),
+		@NamedQuery(name = "Weather.averagePerHour", query = "SELECT AVG(w.humidity) AS pressure, AVG(w.temperature) AS temperature, AVG(w.pressure) as humidity FROM Weather w where w.city=:pCity group by extract(HOUR from  w.timestamp)"),
+		@NamedQuery(name = "Weather.averagePerDay", query = "SELECT AVG(w.humidity) AS pressure, AVG(w.temperature) AS temperature, AVG(w.pressure) as humidity FROM Weather w where w.city=:pCity group by extract(DAY from  w.timestamp)")
+})
 public class Weather {
-
 
 	@Id
 	private String id;
@@ -31,16 +34,14 @@ public class Weather {
 
 	@JsonSerialize(using = AuDateSerializer.class)
 	private java.util.Date timestamp;
-	
 
 	public Weather() {
 		this.id = UUID.randomUUID().toString();
 	}
 
-	
-	public Weather(double humidity){
-		this.humidity=humidity;
-		
+	public Weather(double humidity) {
+		this.humidity = humidity;
+
 	}
 
 	public String getId() {

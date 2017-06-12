@@ -15,5 +15,7 @@ public interface WeatherService {
 	public List<Weather> findAverageWeatherForCity(String city);
 	
 	public List<Weather> findDailyAverageWeatherForCity(String city);
+	
+	public String findRecentWeatherPropertyForCity(String city, String property);
 
 }

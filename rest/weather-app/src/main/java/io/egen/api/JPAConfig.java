@@ -59,7 +59,7 @@ public class JPAConfig {
 	private Properties jpaProperties() {
 		Properties prop = new Properties();
 		prop.setProperty("hibernate.dilate", "org.hibernate.dialect.MySQLDialect");
-		prop.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+		prop.setProperty("hibernate.hbm2ddl.auto", "validate");
 		prop.setProperty("hibernate.show_sql", "true");
 		prop.setProperty("hibernate.format_sql", "true ");
 
