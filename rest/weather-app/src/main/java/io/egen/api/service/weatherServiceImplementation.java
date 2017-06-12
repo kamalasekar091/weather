@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.egen.api.entity.Weather;
+import io.egen.api.exception.BadRequestException;
+import io.egen.api.exception.NotFoundException;
 import io.egen.api.repository.WeatherRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,7 +49,7 @@ public class weatherServiceImplementation implements WeatherService {
 			 * Return a exception stating that the provided city does not exists
 			 * in the database
 			 */
-			return null;
+			throw new NotFoundException(city + " does not exist");
 		}
 
 	}
@@ -64,7 +66,7 @@ public class weatherServiceImplementation implements WeatherService {
 			 * Return a exception stating that the provided city does not exists
 			 * in the database
 			 */
-			return null;
+			throw new NotFoundException(city + " does not exist");
 		}
 
 	}
@@ -80,7 +82,7 @@ public class weatherServiceImplementation implements WeatherService {
 			 * Return a exception stating that the provided city does not exists
 			 * in the database
 			 */
-			return null;
+			throw new NotFoundException(city + " does not exist");
 		}
 
 	}
@@ -108,14 +110,14 @@ public class weatherServiceImplementation implements WeatherService {
 				 * Return exception sating that the given property is not
 				 * present in entity
 				 */
-				return null;
+				throw new BadRequestException(property + " does not exist");
 			}
 		} else {
 			/*
 			 * Return a exception stating that the provided city does not exists
 			 * in the database
 			 */
-			return null;
+			throw new NotFoundException(city + " does not exist");
 
 		}
 	}

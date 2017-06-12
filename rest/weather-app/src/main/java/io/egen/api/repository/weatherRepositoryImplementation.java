@@ -60,18 +60,32 @@ public class weatherRepositoryImplementation implements WeatherRepository {
 	@Override
 	public List<Weather> findAverageWeatherForCity(String city) {
 		// Return the list of the average weather
-		Query query = em.createNamedQuery("Weather.averagePerHour");
-		query.setParameter("pCity", city);
-		List<Object[]> results = query.getResultList();
-		List<Weather> listweather = new ArrayList<Weather>();
-		for (Object[] result : results) {
-
-			// listweather.add(new
-			// Weather(Double.valueOf((double)result[0]),Long.valueOf((long)result[1]),Long.valueOf((long)result[2])));
-			listweather.add(new Weather(Double.valueOf((double) result[0])));
-		}
-
-		return listweather;
+//		TypedQuery<Weather> typedquery = em.createNamedQuery("Weather.averagePerHour", Weather.class);
+//		List staggedweather=typedquery.getResultList();
+//		List<Weather> returnWeather=new ArrayList<Weather>();
+//		for(Object result:staggedweather){
+//			returnWeather.add(new Weather(result[0],result[1],result[2]));
+//		}
+//		
+//		return returnWeather;
+		
+//		Query query = em.createNamedQuery("Weather.averagePerHour");
+//		query.setParameter("pCity", city);
+//		List<Object[]> results = query.getResultList();
+//		List<Weather> listweather = new ArrayList<Weather>();
+//		System.out.println("Size of the result list "+results.size());
+//		for (Object[] result : results) {
+//
+//			// listweather.add(new
+//			// Weather(Double.valueOf((double)result[0]),Long.valueOf((long)result[1]),Long.valueOf((long)result[2])));
+//			//listweather.add(new Weather(Double.valueOf((double) result[0])));
+//			System.out.println(Double.valueOf((double)result[0])+"-----------"+Double.valueOf((double)result[1])+"-----------"+Double.valueOf((double)result[2]));
+//			 listweather.add(new Weather(Double.valueOf((double)result[0]),Double.valueOf((double)result[1]),Double.valueOf((double)result[2])));
+//			
+//		}
+//		
+//
+//		return typedquery.getResultList();
 
 	}
 
@@ -83,10 +97,9 @@ public class weatherRepositoryImplementation implements WeatherRepository {
 				List<Object[]> results = query.getResultList();
 				List<Weather> listweather = new ArrayList<Weather>();
 				for (Object[] result : results) {
-
-					// listweather.add(new
-					// Weather(Double.valueOf((double)result[0]),Long.valueOf((long)result[1]),Long.valueOf((long)result[2])));
-					listweather.add(new Weather(Double.valueOf((double) result[0])));
+					 System.out.println(Double.valueOf((double)result[0])+"-----------"+Double.valueOf((double)result[1])+"-----------"+Double.valueOf((double)result[2]));
+					 listweather.add(new Weather(Double.valueOf((double)result[0]),Double.valueOf((double)result[1]),Double.valueOf((double)result[2])));
+					//listweather.add(new Weather(Double.valueOf((double) result[0])));
 				}
 
 				return listweather;

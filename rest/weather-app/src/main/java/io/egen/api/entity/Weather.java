@@ -27,8 +27,8 @@ public class Weather {
 	private String city;
 	private String description;
 	private double humidity;
-	private long pressure;
-	private long temperature;
+	private double pressure;
+	private double temperature;
 	@OneToOne
 	private Wind wind;
 
@@ -39,8 +39,14 @@ public class Weather {
 		this.id = UUID.randomUUID().toString();
 	}
 
-	public Weather(double humidity) {
+//	public Weather(double humidity) {
+//		this.humidity = humidity;
+//
+//	}
+	public Weather(double humidity,double pressure,double temperature ) {
 		this.humidity = humidity;
+		this.pressure=pressure;
+		this.temperature=temperature;
 
 	}
 
@@ -68,11 +74,11 @@ public class Weather {
 		this.humidity = humidity;
 	}
 
-	public long getPressure() {
+	public double getPressure() {
 		return pressure;
 	}
 
-	public void setPressure(long pressure) {
+	public void setPressure(double pressure) {
 		this.pressure = pressure;
 	}
 
@@ -100,11 +106,11 @@ public class Weather {
 		this.city = city;
 	}
 
-	public long getTemperature() {
+	public double getTemperature() {
 		return temperature;
 	}
 
-	public void setTemperature(long temperature) {
+	public void setTemperature(double temperature) {
 		this.temperature = temperature;
 	}
 
