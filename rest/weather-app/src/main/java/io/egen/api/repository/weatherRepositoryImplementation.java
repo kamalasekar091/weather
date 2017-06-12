@@ -69,23 +69,23 @@ public class weatherRepositoryImplementation implements WeatherRepository {
 //		
 //		return returnWeather;
 		
-//		Query query = em.createNamedQuery("Weather.averagePerHour");
-//		query.setParameter("pCity", city);
-//		List<Object[]> results = query.getResultList();
-//		List<Weather> listweather = new ArrayList<Weather>();
-//		System.out.println("Size of the result list "+results.size());
-//		for (Object[] result : results) {
-//
-//			// listweather.add(new
-//			// Weather(Double.valueOf((double)result[0]),Long.valueOf((long)result[1]),Long.valueOf((long)result[2])));
-//			//listweather.add(new Weather(Double.valueOf((double) result[0])));
-//			System.out.println(Double.valueOf((double)result[0])+"-----------"+Double.valueOf((double)result[1])+"-----------"+Double.valueOf((double)result[2]));
-//			 listweather.add(new Weather(Double.valueOf((double)result[0]),Double.valueOf((double)result[1]),Double.valueOf((double)result[2])));
-//			
-//		}
-//		
-//
-//		return typedquery.getResultList();
+		Query query = em.createNamedQuery("Weather.averagePerHour");
+		query.setParameter("pCity", city);
+		List<Object[]> results = query.getResultList();
+		List<Weather> listweather = new ArrayList<Weather>();
+		System.out.println("Size of the result list "+results.size());
+		for (Object[] result : results) {
+
+			// listweather.add(new
+			// Weather(Double.valueOf((double)result[0]),Long.valueOf((long)result[1]),Long.valueOf((long)result[2])));
+			//listweather.add(new Weather(Double.valueOf((double) result[0])));
+			System.out.println(Double.valueOf((double)result[0])+"-----------"+Double.valueOf((double)result[1])+"-----------"+Double.valueOf((double)result[2]));
+			 listweather.add(new Weather(Double.valueOf((double)result[0]),Double.valueOf((double)result[1]),Double.valueOf((double)result[2])));
+			
+		}
+		
+
+		return listweather;
 
 	}
 
