@@ -1,19 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.egen</groupId>
-  <artifactId>weather-app</artifactId>
-  <version>0.0.1</version>
-  <packaging>war</packaging>
+	<groupId>io.egen</groupId>
+	<artifactId>weather-app</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
 
-  <name>weather-app</name>
-  <url>http://egen.io</url>
+	<name>weather-app</name>
+	<url>http://egen.io</url>
 
-  <build>
+	<build>
 		<plugins>
 			<plugin>
-			<!-- Add Configuration to update JAVA version -->
+				<!-- Add Configuration to update JAVA version -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.6.1</version>
@@ -23,7 +23,8 @@
 				</configuration>
 			</plugin>
 			<plugin>
-			<!-- Add the dependency to ignore the error for fail on missing xml configuration file -->
+				<!-- Add the dependency to ignore the error for fail on missing xml configuration 
+					file -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.1.0</version>
@@ -74,6 +75,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>4.3.8.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.6.1</version>
 		</dependency>
 
 	</dependencies>
