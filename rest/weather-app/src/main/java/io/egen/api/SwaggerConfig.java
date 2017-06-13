@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).pathMapping("/api").useDefaultResponseMessages(false).select()
+		return new Docket(DocumentationType.SWAGGER_2).pathMapping("").useDefaultResponseMessages(false).select()
 				.apis(RequestHandlerSelectors.any()).paths(PathSelectors.any()).build().apiInfo(apiInfo());
 	}
 	
