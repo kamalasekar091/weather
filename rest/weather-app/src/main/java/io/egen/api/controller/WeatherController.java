@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.egen.api.constants.URI;
+import io.egen.api.entity.AverageWeather;
 import io.egen.api.entity.Weather;
 import io.egen.api.service.WeatherService;
 import io.swagger.annotations.Api;
@@ -36,6 +37,7 @@ public class WeatherController {
 			@ApiResponse(code = 400, message = "Bad Request"),
 			@ApiResponse(code = 500, message = "Internal Server Error") })
 	public Weather create(@RequestBody Weather weather) {
+		
 		return weatherservice.create(weather);
 	}
 
@@ -73,13 +75,13 @@ public class WeatherController {
 	// findAverageWeatherForCity
 	@RequestMapping(method = RequestMethod.GET, value = URI.AVERAGE_WEATHER_PER_HOUR)
 	@ApiOperation(value = "Find Houry Average weather", notes = "Retrive hourly average weather for the given city")
-	public List<Weather> findHourlyAverageWeatherForCity(@PathVariable("city") String city) {
+	public List<AverageWeather> findHourlyAverageWeatherForCity(@PathVariable("city") String city) {
 		return weatherservice.findAverageWeatherForCity(city);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = URI.AVERAGE_WEATHER_PER_DAY)
 	@ApiOperation(value = "Find Daily  Average weather", notes = "Retrive daily average weather for the given city")
-	public List<Weather> findDailyAverageWeatherForCity(@PathVariable("city") String city) {
+	public List<AverageWeather> findDailyAverageWeatherForCity(@PathVariable("city") String city) {
 		return weatherservice.findDailyAverageWeatherForCity(city);
 	}
 }

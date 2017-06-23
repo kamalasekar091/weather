@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import io.egen.api.entity.AverageWeather;
 import io.egen.api.entity.Weather;
 import io.egen.api.exception.BadRequestException;
 import io.egen.api.exception.NotFoundException;
@@ -40,61 +41,81 @@ public class weatherServiceImplementation implements WeatherService {
 	@Override
 	public Weather findRecentWeatherForCity(String city) {
 
-		Weather theWeather = weatherrepo.findIfCityIsPresent(city);
+		
+		
+		//Weather theWeather = weatherrepo.findIfCityIsPresent(city).orElseThrow(()-> new NotFoundException(city + " does not exist"));
 
-		if (theWeather != null) {
-			return weatherrepo.findRecentWeatherForCity(city);
-		} else {
-			/*
-			 * Return a exception stating that the provided city does not exists
-			 * in the database
-			 */
-			throw new NotFoundException(city + " does not exist");
-		}
-
-	}
-
-	@Override
-	public List<Weather> findAverageWeatherForCity(String city) {
-
-		Weather theWeather = weatherrepo.findIfCityIsPresent(city);
-
-		if (theWeather != null) {
-			return weatherrepo.findAverageWeatherForCity(city);
-		} else {
-			/*
-			 * Return a exception stating that the provided city does not exists
-			 * in the database
-			 */
-			throw new NotFoundException(city + " does not exist");
-		}
+		return weatherrepo.findRecentWeatherForCity(city).orElseThrow(()-> new NotFoundException(city + " does not exist"));
+		
+//		Weather theWeather = weatherrepo.findIfCityIsPresent(city);
+//		
+//		if (theWeather != null) {
+//			return weatherrepo.findRecentWeatherForCity(city);
+//		} else {
+//			/*
+//			 * Return a exception stating that the provided city does not exists
+//			 * in the database
+//			 */
+//			throw new NotFoundException(city + " does not exist");
+//		}
 
 	}
 
 	@Override
-	public List<Weather> findDailyAverageWeatherForCity(String city) {
-		Weather theWeather = weatherrepo.findIfCityIsPresent(city);
+	public List<AverageWeather> findAverageWeatherForCity(String city) {
+		
+		
+		Weather theWeather = weatherrepo.findIfCityIsPresent(city).orElseThrow(()-> new NotFoundException(city + " does not exist"));
 
-		if (theWeather != null) {
-			return weatherrepo.findDailyAverageWeatherForCity(city);
-		} else {
-			/*
-			 * Return a exception stating that the provided city does not exists
-			 * in the database
-			 */
-			throw new NotFoundException(city + " does not exist");
-		}
+		return weatherrepo.findAverageWeatherForCity(city);
+
+
+//		Weather theWeather = weatherrepo.findIfCityIsPresent(city);
+//
+//		if (theWeather != null) {
+//			return weatherrepo.findAverageWeatherForCity(city);
+//		} else {
+//			/*
+//			 * Return a exception stating that the provided city does not exists
+//			 * in the database
+//			 */
+//			throw new NotFoundException(city + " does not exist");
+//		}
+
+	}
+	@Override
+	public List<AverageWeather> findDailyAverageWeatherForCity(String city) {
+		
+		Weather theWeather = weatherrepo.findIfCityIsPresent(city).orElseThrow(()-> new NotFoundException(city + " does not exist"));
+
+		return weatherrepo.findDailyAverageWeatherForCity(city);
+
+		
+//		Weather theWeather = weatherrepo.findIfCityIsPresent(city);
+//
+//		if (theWeather != null) {
+//			return weatherrepo.findDailyAverageWeatherForCity(city);
+//		} else {
+//			/*
+//			 * Return a exception stating that the provided city does not exists
+//			 * in the database
+//			 */
+//			throw new NotFoundException(city + " does not exist");
+//		}
 
 	}
 
 	@Override
 	public String findRecentWeatherPropertyForCity(String city, String property) {
 
-		Weather theWeather = weatherrepo.findIfCityIsPresent(city);
+		Weather theWeather = weatherrepo.findIfCityIsPresent(city).orElseThrow(()-> new NotFoundException(city + " does not exist"));
+		
+		Weather retrivedWeather = weatherrepo.findRecentWeatherForCity(city).orElseThrow(()-> new BadRequestException(property + " does not exist"));
+		//Weather theWeather = weatherrepo.findIfCityIsPresent(city);
 
 		if (theWeather != null) {
 
-			Weather retrivedWeather = weatherrepo.findRecentWeatherForCity(city);
+		//	Weather retrivedWeather = weatherrepo.findRecentWeatherForCity(city).orElseThrow(()-> new BadRequestException(property + " does not exist"));
 
 			if (property.equalsIgnoreCase("pressure")) {
 				String propertyFromResult = String.valueOf(retrivedWeather.getPressure());

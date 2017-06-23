@@ -1,7 +1,9 @@
 package io.egen.api.repository;
 
 import java.util.List;
+import java.util.Optional;
 
+import io.egen.api.entity.AverageWeather;
 import io.egen.api.entity.Weather;
 
 public interface WeatherRepository {
@@ -10,11 +12,11 @@ public interface WeatherRepository {
 	
 	public List<String> findCity();
 	
-	public Weather findRecentWeatherForCity(String city);
+	public Optional<Weather> findRecentWeatherForCity(String city);
 	
-	public Weather findIfCityIsPresent(String city);
+	public Optional<Weather> findIfCityIsPresent(String city);
 	
-	public List<Weather> findAverageWeatherForCity(String city);
+	public List<AverageWeather> findAverageWeatherForCity(String city);
 	
-	public List<Weather> findDailyAverageWeatherForCity(String city);
+	public List<AverageWeather> findDailyAverageWeatherForCity(String city);
 }
